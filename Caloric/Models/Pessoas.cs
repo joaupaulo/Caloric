@@ -21,8 +21,6 @@ namespace Caloric.Models
 
         public List<Enderecos> Enderecos { get; set; }
 
-        public int CaracteFisicasId { get; set; }
-
         public CaracteristicasFisicas CaracteristicasFisicas { get; set; }
 
     }

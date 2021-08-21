@@ -14,7 +14,8 @@ namespace Caloric.Models
         public int Peso { get; set; }
         public string Biotipo { get; set; }
 
-        public Pessoas Pessoas { get; set; }
+        public int PessoasId { get; set; }
+        public Pessoas PessoaId { get; set; }
 
     }
 }

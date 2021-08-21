@@ -23,7 +23,18 @@ namespace Caloric.Contexto
         public DbSet<Nutrientes> Nutrientes { get; set; }
         public DbSet<Pessoas> Pessoas { get; set; }
         public DbSet<Quantidade> Quantidades { get; set; }
+          
 
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            modelbuilder.Entity<NutrientesAlimentos>().HasKey(x => new { x.AlimentosId, x.NutrientesId });
+        }
+          
+
+        public DbSet<Caloric.Models.NutrientesAlimentos> NutrientesAlimentos { get; set; }
+          
+
+        public DbSet<Caloric.Models.RelatorioPrincipal> RelatorioPrincipal { get; set; }
 
 
 

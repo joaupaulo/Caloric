@@ -26,6 +26,9 @@ namespace Caloric.Models
         [DisplayName("Açucar")]
         public int Acucar { get; set; }
 
+        public ICollection<Alimentos> Alimenntos { get; set; }
+
+
 
 
 

@@ -1,0 +1,48 @@
+﻿@model Caloric.Models.Nutrientes
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Nutrientes</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Carboidratos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Carboidratos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Proteinas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Proteinas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gorduras)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gorduras)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sodio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sodio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Acucar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Acucar)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NutrientesId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

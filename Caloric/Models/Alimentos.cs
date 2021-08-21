@@ -20,7 +20,7 @@ namespace Caloric.Models
         [DisplayName("Café")]
         public string CafeDaNoite { get; set; }
 
-    
+    public ICollection<Nutrientes> Nutrientes { get; set; }
 
     }
 

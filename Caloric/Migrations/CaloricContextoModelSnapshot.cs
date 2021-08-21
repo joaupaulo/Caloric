@@ -18,6 +18,21 @@ namespace Caloric.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AlimentosNutrientes", b =>
+                {
+                    b.Property<int>("AlimenntosAlimentosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NutrientesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AlimenntosAlimentosId", "NutrientesId");
+
+                    b.HasIndex("NutrientesId");
+
+                    b.ToTable("AlimentosNutrientes");
+                });
+
             modelBuilder.Entity("Caloric.Models.Alimentos", b =>
                 {
                     b.Property<int>("AlimentosId")
@@ -58,7 +73,13 @@ namespace Caloric.Migrations
                     b.Property<int>("Peso")
                         .HasColumnType("int");
 
+                    b.Property<int>("PessoasId")
+                        .HasColumnType("int");
+
                     b.HasKey("CaracteFisicasId");
+
+                    b.HasIndex("PessoasId")
+                        .IsUnique();
 
                     b.ToTable("CaracteristicasFisicas");
                 });
@@ -91,7 +112,12 @@ namespace Caloric.Migrations
                     b.Property<string>("Pais")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PessoasId")
+                        .HasColumnType("int");
+
                     b.HasKey("EnderecosId");
+
+                    b.HasIndex("PessoasId");
 
                     b.ToTable("Enderecos");
                 });
@@ -135,6 +161,21 @@ namespace Caloric.Migrations
                     b.ToTable("Nutrientes");
                 });
 
+            modelBuilder.Entity("Caloric.Models.NutrientesAlimentos", b =>
+                {
+                    b.Property<int>("AlimentosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NutrientesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AlimentosId", "NutrientesId");
+
+                    b.HasIndex("NutrientesId");
+
+                    b.ToTable("NutrientesAlimentos");
+                });
+
             modelBuilder.Entity("Caloric.Models.Pessoas", b =>
                 {
                     b.Property<int>("PessoasId")
@@ -172,6 +213,69 @@ namespace Caloric.Migrations
                     b.HasKey("QuantidadeId");
 
                     b.ToTable("Quantidades");
+                });
+
+            modelBuilder.Entity("AlimentosNutrientes", b =>
+                {
+                    b.HasOne("Caloric.Models.Alimentos", null)
+                        .WithMany()
+                        .HasForeignKey("AlimenntosAlimentosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Caloric.Models.Nutrientes", null)
+                        .WithMany()
+                        .HasForeignKey("NutrientesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Caloric.Models.CaracteristicasFisicas", b =>
+                {
+                    b.HasOne("Caloric.Models.Pessoas", "PessoaId")
+                        .WithOne("CaracteristicasFisicas")
+                        .HasForeignKey("Caloric.Models.CaracteristicasFisicas", "PessoasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PessoaId");
+                });
+
+            modelBuilder.Entity("Caloric.Models.Enderecos", b =>
+                {
+                    b.HasOne("Caloric.Models.Pessoas", "Pessoas")
+                        .WithMany("Enderecos")
+                        .HasForeignKey("PessoasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pessoas");
+                });
+
+            modelBuilder.Entity("Caloric.Models.NutrientesAlimentos", b =>
+                {
+                    b.HasOne("Caloric.Models.Alimentos", "Alimentos")
+                        .WithMany()
+                        .HasForeignKey("AlimentosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Caloric.Models.Nutrientes", "Nutrientes")
+                        .WithMany()
+                        .HasForeignKey("NutrientesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alimentos");
+
+                    b.Navigation("Nutrientes");
+                });
+
+            modelBuilder.Entity("Caloric.Models.Pessoas", b =>
+                {
+                    b.Navigation("CaracteristicasFisicas");
+
+                    b.Navigation("Enderecos");
                 });
 #pragma warning restore 612, 618
         }
