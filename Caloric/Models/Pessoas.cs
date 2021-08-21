@@ -19,5 +19,11 @@ namespace Caloric.Models
 
         public string Email { get; set; }
 
+        public List<Enderecos> Enderecos { get; set; }
+
+        public int CaracteFisicasId { get; set; }
+
+        public CaracteristicasFisicas CaracteristicasFisicas { get; set; }
+
     }
 }
