@@ -4,7 +4,87 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+<main>
+
+
+
+    <div class="conteudo">
+
+        <div>
+            <h1>Nutricionista</h1>
+            <h2>Paulo Santos</h2>
+            <h4>
+                Especializada em Atendimento Clínico e Terapêutico Nutricional. Foi fundada em Janeiro 2010, com objetivo de oferecer atendimento individualizado ás pessoas que necessitam conhecer e usufruir dos valores nutricionais dos alimentos que são ingeridos diariamente.
+            </h4>
+
+            
+            @Html.ActionLink("Clique aqui", "Create", "PessoasController");
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+
+<style>
+
+    .button1{
+        padding:20px 20px;
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    .conteudo {
+        display: flex;
+        background-color: #3f51b5;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        font-family:sans-serif;       
+        color: #f9fbe7;
+    }
+
+    .conteudo h1 {
+        font-size:120px;
+        text-align:center;
+    }
+
+
+        .conteudo h2 {
+            margin: 0 auto;
+            text-align:center;
+        }
+
+        .conteudo h4 {
+            margin-top:30px;
+            width:700px;
+            text-align:center;
+            margin-left:30px;
+            font-weight:lighter;
+        }
+
+
+
+</style>
+
+
+@*<style type="text/css">
+    @@font-face {
+        font-family: 'Roboto', sans-serif;
+        src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+    }
+
+    </style>*@
